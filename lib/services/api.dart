@@ -13,4 +13,14 @@ class Api {
       throw Exception('there is an error ${response.statusCode}');
     }
   }
+
+  Future<dynamic> post({required String url}) async {
+    http.Response response = await http.post(Uri.parse(url));
+    List<dynamic> data = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      return data;
+    } else {
+      throw Exception('there is an error ${response.statusCode}');
+    }
+  }
 }
