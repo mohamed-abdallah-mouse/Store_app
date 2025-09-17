@@ -14,8 +14,8 @@ class Api {
     }
   }
 
-  Future<dynamic> post({required String url}) async {
-    http.Response response = await http.post(Uri.parse(url));
+  Future<dynamic> post({required String url, dynamic body}) async {
+    http.Response response = await http.post(Uri.parse(url), body: body);
     List<dynamic> data = jsonDecode(response.body);
     if (response.statusCode == 200) {
       return data;
@@ -24,8 +24,8 @@ class Api {
     }
   }
 
-  Future<dynamic> put({required String url}) async {
-    http.Response response = await http.put(Uri.parse(url));
+  Future<dynamic> put({required String url, dynamic body}) async {
+    http.Response response = await http.put(Uri.parse(url), body: body);
     List<dynamic> data = jsonDecode(response.body);
     if (response.statusCode == 200) {
       return data;
